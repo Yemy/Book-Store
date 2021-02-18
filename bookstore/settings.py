@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # Third-party
     'crispy_forms',
+    'allauth',
+    'allauth.account',
     # local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -142,8 +145,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # tells Django how to look for static file directories.
 STATICFILES_FINDERS = [
-"django.contrib.staticfiles.finders.FileSystemFinder",
-"django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
 # defining and changing the User to use custom user
@@ -153,4 +156,26 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 
 # logout redirect
-LOGOUT_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+# overwritten by allauth
+ACCOUNT_LOGOUT_REDIRECT = 'home'
+
+# django-allauth config
+SITE_ID = 1
+# AUTHENTICATION_BACKENDS setting. the 1st is the django's default and the 2nd is for django allauth
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend', # new
+)
+# emain backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# for the Remember Me in login page by default make it True
+ACCOUNT_SESSION_REMEMBER = True
+# to hide the password confirmation on signup
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+# to make username optional and to use email as authentication method, make is required and unique
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
