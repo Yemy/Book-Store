@@ -135,4 +135,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# telling to use custom user
 AUTH_USER_MODEL = 'users.CustomUser'
+
+# login redirect
+LOGIN_REDIRECT_URL = 'home'
+
+# logout redirect
+LOGOUT_REDIRECT_URL = 'home'
