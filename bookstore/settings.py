@@ -179,3 +179,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+# default from email  
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
