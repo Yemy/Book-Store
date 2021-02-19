@@ -149,6 +149,10 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+# url used in templates
+MEDIA_URL = '/media/'
+# absolute file system path
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # defining and changing the User to use custom user
 AUTH_USER_MODEL = 'users.CustomUser'
