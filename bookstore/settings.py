@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
     # local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -170,7 +172,7 @@ SITE_ID = 1
 # AUTHENTICATION_BACKENDS setting. the 1st is the django's default and the 2nd is for django allauth
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend', # new
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 # emain backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -187,3 +189,5 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 # default from email
 DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
